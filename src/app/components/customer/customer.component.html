@@ -1,0 +1,47 @@
+<h1>Customer</h1>
+ <p>Welcome {{name}}</p>
+
+ <button (click)="getAllCoupons()">SHOW ALL COUPONS </button>
+
+<ng-container *ngIf="coupons; else elseTemplate">
+
+  <table>
+    <tr>
+      <th>CouponID</th>
+      <th>CompanyID</th>
+      <th>Category</th>
+      <th>Title</th>
+      <th>StartDate</th>
+      <th>EndDate</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Price</th>
+      <th>Image</th>
+
+
+
+    </tr>
+
+    <tr *ngFor="let coupon of coupons">
+      <td>{{coupon.id}}</td>
+      <td>{{coupon.companyID}}</td>
+      <td>{{coupon.category}}</td>
+      <td>{{coupon.title}}</td>
+      <td>{{coupon.description}}</td>
+      <td>{{coupon.startDate}}</td>
+      <td>{{coupon.endDate}}</td>
+      <td>{{coupon.amount}}</td>
+      <td>{{coupon.price}}</td>
+      <td>{{coupon.image}}</td>
+
+
+
+
+
+    </tr>
+  </table>
+
+</ng-container>
+<ng-template #elseTemplate>
+  <!-- <app-empty-view message='Nothing To See Here!'></app-empty-view> -->
+</ng-template>

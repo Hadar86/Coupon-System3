@@ -1,0 +1,72 @@
+<h1>Customer</h1>
+
+<ng-container *ngIf="customers; else elseTemplate">
+
+  <table>
+    <tr>
+      <th>id</th>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Coupons</th>
+      <th><button (click)="openCustomerAddDialog()">➕ ADD</button>Action</th>
+
+    </tr>
+
+    <tr *ngFor="let customer of customers">
+      <td>{{customer.id}}</td>
+      <td>{{customer.lastName}}</td>
+      <td>{{customer.firstName}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.password}}</td>
+      <td><li *ngFor="let item of customer.coupons">{{item.title}}</li></td>
+
+      <td>
+        <button (click)="deleteCustomer(customer)">🗑 DELETE</button>
+        <button (click)="openCustomerUpdateDialog(customer)">🖋 UPDATE</button>
+      </td>
+
+
+    </tr>
+  </table>
+
+</ng-container>
+<ng-template #elseTemplate>
+  <!-- <app-empty-view message='Nothing To See Here!'></app-empty-view> -->
+</ng-template>
+
+<h1>Company</h1>
+<!-- <app-empty-view></app-empty-view> -->
+<ng-container *ngIf="companies; else elseTemplate">
+
+  <table>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Coupons</th>
+      <th><button (click)="openCompanyAddDialog()">➕ ADD</button> Action</th>
+
+    </tr>
+
+    <tr *ngFor="let company of companies">
+      <td>{{company.id}}</td>
+      <td>{{company.name}}</td>
+      <td>{{company.email}}</td>
+      <td>{{company.password}}</td>
+      <td><li *ngFor="let item of company.coupons">{{item.title}}</li></td>
+
+      <td>
+        <button (click)="deleteCompany(company)">🗑 DELETE</button>
+        <button (click)="openCompanyUpdateDialog(company)">🖋 UPDATE</button>
+      </td>
+
+    </tr>
+  </table>
+
+</ng-container>
+<ng-template #elseTemplate2>
+  <!-- <app-empty-view message='Nothing To See Here!'></app-empty-view> -->
+</ng-template>

@@ -1,0 +1,66 @@
+
+<div class="center">
+
+  <br>
+  <h1>Coupon System</h1>
+</div>
+<br>
+<br>
+<br>
+<div>
+  <form (ngSubmit)="onSubmit(formInfo)" #formInfo="ngForm" class="form-group" >
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Email address</label>
+        <input #emailInfo="ngModel" type="email" class="form-control" aria-describedby="emailHelp" required email
+          placeholder="Enter email" name="email" [(ngModel)]="loginDetails.email">
+
+        <small *ngIf="emailInfo.untouched" id="emailHelp" class="form-text text-muted">Your email is safe with us.</small>
+        <small [ngStyle]="{'color':'tomato'}" *ngIf="emailInfo.errors?.required && emailInfo.touched">Email is
+          missing</small>
+        <small [ngStyle]="{'color':'tomato'}" *ngIf="emailInfo.errors?.email && emailInfo.touched">Invalid email</small>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="exampleInputPassword1">Password</label>
+        <input #passwordInfo="ngModel" type="password" required [(ngModel)]="loginDetails.password" name="password"
+          pattern="^(?=.*[A-Z])(?=.*[!@#$%^])(?=.*[0-9])(?=.*[a-z]).{4,}" class="form-control" placeholder="Password">
+        <small *ngIf="passwordInfo.untouched" id="emailHelp" class="form-text text-muted">Your password is safe with us.</small>
+        <small [ngStyle]="{'color':'tomato'}" *ngIf="passwordInfo.errors?.required && passwordInfo.touched">Password in
+          missing</small>
+        <small [ngStyle]="{'color':'tomato'}" *ngIf="passwordInfo.errors?.pattern && passwordInfo.touched">Invalid
+          password, must support at least: 1 lowercase, 1 uppercase, 1 digit</small>
+
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="exampleInputPassword1">Type</label>
+        <select #typeInfo="ngModel" required name="type" [(ngModel)]="loginDetails.type" class="custom-select"
+          id="inputGroupSelect04">
+          <option disabled selected value="">Choose your type</option>
+          <option value="Admin">Admin</option>
+          <option value="Company">Company</option>
+          <option value="Customer">Customer</option>
+        </select>
+        <small *ngIf="typeInfo.untouched" id="emailHelp" class="form-text text-muted">Connect to your account</small>
+        <small [ngStyle]="{'color':'tomato'}" *ngIf="typeInfo.errors?.required && typeInfo.touched">You must choose a
+          type</small>
+
+      </div>
+    </div>
+
+    <div class="center">
+      <button type="submit" class="btn btn-primary" [disabled]="formInfo.invalid">Login</button>
+    </div>
+
+  </form>
+</div>
+
+<!-- <hr>
+<p> {{loginDetails | json}} </p> -->
+

@@ -1,0 +1,40 @@
+<div>
+  <table>
+    <tr>
+      <th>coupon id</th>
+      <th>company id</th>
+      <th>Category</th>
+      <th>title</th>
+      <th>description</th>
+      <th>star Date</th>
+      <th>end Date</th>
+      <th>amount</th>
+      <th>price</th>
+      <th>image</th>
+      <th>ACTION</th>
+
+
+    </tr>
+    <tr *ngFor="let coupon of coupons">
+      <td>{{coupon.id}}</td>
+      <td>{{coupon.companyID}}</td>
+      <td>{{coupon.category}}</td>
+      <td>{{coupon.title}}</td>
+      <td>{{coupon.description}}</td>
+      <td>{{coupon.startDate}}</td>
+      <td>{{coupon.endDate}}</td>
+      <td>{{coupon.amount}}</td>
+      <td>{{coupon.price}}</td>
+      <td>{{coupon.image}}</td>
+      <td><button (click)="purchaseCoupon(coupon)">PURCHASE </button>
+      </td>
+
+
+    </tr>
+  </table>
+
+  <div class="example-button-row">
+    <button mat-button color="warn" (click)="onNoClick()">Close</button>
+  </div>
+
+</div>

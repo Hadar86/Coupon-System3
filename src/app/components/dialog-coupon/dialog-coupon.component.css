@@ -1,0 +1,37 @@
+.bad{
+  color:darkred;
+  font-weight: bold;
+}
+
+.center{
+  height: max-content;
+}
+
+.mycustomform{
+  text-align: center;
+}
+
+.myform{
+  text-align: center;
+  margin: 0%;
+}
+
+input{
+  width: 100%;
+}
+
+.buttons{
+  margin: auto;
+  display: inline;
+}
+
+.flexi{
+  display: flex;
+  justify-content: flex-start;
+  margin: auto;
+}
+
+small{
+  display: inline-block;
+  left: auto;
+}
