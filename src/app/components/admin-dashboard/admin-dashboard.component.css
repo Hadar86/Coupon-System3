@@ -1,0 +1,33 @@
+h1 {
+  font-size: 30px;
+  font: normal normal normal 30px Segoe UI;
+  color: #000000;
+  margin: 0 0 0 100px;
+}
+div {
+  margin-top: 60px;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  font: normal normal normal 41px Segoe UI;
+  background: #ffffff;
+  border-radius: 15px;
+
+}
+button{
+  width: 300px;
+  height: 100px;
+  margin:20px;
+  color:#f95c86;
+  font-weight: bold;
+  border: 0.5px solid;
+  border-radius: 18px;
+
+border-color:rgb(102, 100, 100) ;
+}
+ul{
+  font: normal normal normal 20px Segoe UI;
+  padding:10px 0 10px 0;
+  margin-left: 100px;
+  margin-bottom: 250px;
+}

@@ -1,8 +1,47 @@
-<h1>Customer</h1>
- <p>Welcome {{name}}</p>
+<div>
+  <br>
+  <br>
 
- <button (click)="getAllCoupons()">SHOW ALL COUPONS </button>
 
+  <h1>Customer</h1>
+  <p>Welcome {{name}}</p>
+<br>
+<br>
+  <button class="all" (click)="getAllCoupons()">SHOW ALL COUPONS </button>
+  <br>
+  <br>
+
+
+  <br>
+  <div class="filters">
+
+
+
+    <div class="container mx-0">
+
+      <div class="row ">
+        <label class="pl-0"> Max Price </label>
+        <div class="d-inline" style="width:150px;">
+          <input [(ngModel)]="maxPrice" class="w-100 h-100">
+        </div>
+
+        <label class="pl-3 "> Category </label>
+        <div class="d-inline" style="width:120px;">
+          <select [(ngModel)]="category" class="w-100 h-100">
+            <option *ngFor="let i of categories" [value]="i">{{i}}</option>
+          </select>
+        </div>
+        <button class="ml-3" (click)="FilterCoupons()">Filter By</button>
+        <button  class="back"(click)="ngOnInit()">↺</button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
 <ng-container *ngIf="coupons; else elseTemplate">
 
   <table>
@@ -11,15 +50,12 @@
       <th>CompanyID</th>
       <th>Category</th>
       <th>Title</th>
-      <th>StartDate</th>
-      <th>EndDate</th>
       <th>Description</th>
+      <th>Start Date</th>
+      <th>End Date</th>
       <th>Amount</th>
       <th>Price</th>
       <th>Image</th>
-
-
-
     </tr>
 
     <tr *ngFor="let coupon of coupons">
@@ -28,20 +64,14 @@
       <td>{{coupon.category}}</td>
       <td>{{coupon.title}}</td>
       <td>{{coupon.description}}</td>
-      <td>{{coupon.startDate}}</td>
-      <td>{{coupon.endDate}}</td>
+      <td>{{coupon.startDate | date: 'MM/dd/yyyy'}}</td>
+      <td>{{coupon.endDate | date: 'MM/dd/yyyy'}}</td>
       <td>{{coupon.amount}}</td>
       <td>{{coupon.price}}</td>
-      <td>{{coupon.image}}</td>
-
-
-
-
-
+      <td><img src={{coupon.image}}></td>
     </tr>
   </table>
 
 </ng-container>
 <ng-template #elseTemplate>
-  <!-- <app-empty-view message='Nothing To See Here!'></app-empty-view> -->
 </ng-template>

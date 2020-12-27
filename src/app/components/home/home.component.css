@@ -1,0 +1,54 @@
+
+.car img{
+  width: 1200px;
+  height: 350px;
+}
+div{
+  text-align:center;
+
+}
+
+.how{
+font: normal normal normal 32px Segoe UI;
+color: #000000;
+text-align:center;
+}
+
+.rot img{
+  margin: 0 180px 0 180px;
+  width: 100px;
+  height: 100px;
+}
+.rot{
+  display: inline;
+
+}
+.title{
+  display: inline-flex;
+  font: normal normal normal 18px Segoe UI;
+  color: #ff6e91;
+  margin: 0 150px 0 150px;
+  padding-top: 20px;
+
+
+}
+p{
+  margin: 0 150px 0 150px;
+
+}
+
+.lorem{
+  font: normal normal normal 16px Segoe UI;
+  color:black;
+  padding-top: 20px;
+  display: inline-flex;
+
+}
+.one {
+margin:0 100px 0 460px;
+
+}
+.two {
+  margin-right: 420px;
+  padding-left: 10px;
+  }

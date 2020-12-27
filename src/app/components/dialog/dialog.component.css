@@ -1,37 +1,45 @@
-.bad{
-  color:darkred;
+.bad {
+  color: darkred;
   font-weight: bold;
 }
-
-.center{
-  height: max-content;
+h2 {
+  font: normal normal normal 28px Segoe UI;
+  color: #047a92;
 }
 
-.mycustomform{
-  text-align: center;
-}
-
-.myform{
-  text-align: center;
-  margin: 0%;
-}
-
-input{
+input {
   width: 100%;
 }
 
-.buttons{
+button {
+  top: 25px;
+  right: 20px;
+  width: 79px;
+  height: 36px;
+  background: #f95c86;
+  border-radius: 18px;
+  border: 0.5px solid;
+  border-color: #f95c86;
+  text-align: center;
+  font: normal normal normal 14px Segoe UI;
+  color: #ffffff;
   margin: auto;
   display: inline;
 }
 
-.flexi{
+.flexi {
+  font: normal normal normal 16px Segoe UI;
+  color: #000000;
   display: flex;
   justify-content: flex-start;
   margin: auto;
 }
 
-small{
-  display: inline-block;
+.small {
   left: auto;
+}
+.mat-dialog-content {
+  width: 500px;
+  height: 400px;
+
 }

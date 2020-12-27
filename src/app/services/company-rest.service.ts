@@ -20,8 +20,20 @@ export class CompanyRestService {
 
   company: Company;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    if (sessionStorage.getItem("company")) {
+      this.company = JSON.parse(sessionStorage.getItem("company"));
+    }
+  }
 
+  public setCompany(company: Company) {
+    this.company = company;
+    sessionStorage.setItem("company", JSON.stringify(company));
+  }
+  public clearCompany() {
+    this.company = undefined;
+    sessionStorage.removeItem("company");
+  }
   public getAllCompanyCoupons(): Observable<Coupon[]> {
     return this.httpClient.get<Coupon[]>(this.GET_ALL_COMPANY_COUPONS_URL);
   }

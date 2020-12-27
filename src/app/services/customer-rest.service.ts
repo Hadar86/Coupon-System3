@@ -20,7 +20,22 @@ export class CustomerRestService {
   customer: Customer;
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    if (sessionStorage.getItem("customer")) {
+      console.log("customer from session", sessionStorage.getItem("customer"));
+
+      this.customer = JSON.parse(sessionStorage.getItem("customer"));
+    }
+  }
+
+  public setCustomer(customer: Customer) {
+    this.customer = customer;
+    sessionStorage.setItem("customer", JSON.stringify(customer));
+  }
+  public clearCustomer() {
+    this.customer = undefined;
+    sessionStorage.removeItem("customer");
+  }
   public getAllCustomerCoupons(): Observable<Coupon[]> {
     return this.httpClient.get<Coupon[]>(this.GET_ALL_CUSTOMER_COUPONS_URL);
   }

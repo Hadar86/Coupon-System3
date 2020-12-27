@@ -24,8 +24,20 @@ export class AdminRestService {
 
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    if (sessionStorage.getItem("token")) {
+      this.token = sessionStorage.getItem("token");
+    }
+  }
   token: string;
+  public setToken(token :string){
+    this.token = token;
+    sessionStorage.setItem("token", token);
+  }
+  public clearToken() {
+    this.token = undefined;
+    sessionStorage.removeItem("token");
+  }
 
   public getAllCustomers(): Observable<Customer[]> {
     return this.httpClient.get<Customer[]>(this.GET_ALL_CUSTOMERS_URL);
@@ -63,4 +75,5 @@ export class AdminRestService {
   public loginAdmin(email: string, password: string): Observable<any> {
     return this.httpClient.post<any>(this.LOGIN_ADMIN_URL + email + '/' + password, null);
   }
+
 }

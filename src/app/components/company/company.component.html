@@ -1,9 +1,18 @@
+
 <div>
+  <br>
+  <br>
+
   <h1>Company</h1>
   <p>Welcome {{name}}</p>
 
   <ng-container *ngIf="coupons  && coupons.length>0; else elseTemplate">
-
+    <div class="add">
+      <button class="ac"(click)="openCouponAddDialog()">➕ Add Coupon </button>
+      <br>
+      <br>
+      <br>
+</div>
     <table>
       <tr>
         <th>CouponID</th>
@@ -11,12 +20,11 @@
         <th>Category</th>
         <th>Title</th>
         <th>Description</th>
-        <th>StartDate</th>
-        <th>EndDate</th>
+        <th>Start Date</th>
+        <th>End Date</th>
         <th>Amount</th>
         <th>Price</th>
         <th>Image</th>
-        <th><button (click)="openCouponAddDialog()">➕ ADD </button>Action</th>
 
 
 
@@ -29,15 +37,15 @@
         <td>{{coupon.category}}</td>
         <td>{{coupon.title}}</td>
         <td>{{coupon.description}}</td>
-        <td>{{coupon.startDate}}</td>
-        <td>{{coupon.endDate}}</td>
+        <td>{{coupon.startDate | date: 'MM/dd/yyyy'}}</td>
+        <td>{{coupon.endDate | date: 'MM/dd/yyyy'}}</td>
         <td>{{coupon.amount}}</td>
         <td>{{coupon.price}}</td>
-        <td>{{coupon.image}}</td>
+        <td><img src={{coupon.image}}></td>
 
         <td>
-          <button (click)="deleteCoupon(coupon)">🗑 DELETE</button>
-          <button (click)="openCouponUpdateDialog(coupon)">🖋 UPDATE</button>
+          <button (click)="deleteCoupon(coupon)"> 🗑️ Delete </button>
+          <button (click)="openCouponUpdateDialog(coupon)"> 🖋 Edit </button>
 
         </td>
 
@@ -47,6 +55,5 @@
 
   </ng-container>
   <ng-template #elseTemplate>
-    <!-- <app-empty-view message='Nothing To See Here!'></app-empty-view> -->
   </ng-template>
 </div>

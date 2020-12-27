@@ -12,19 +12,19 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
+  static readonly DATE_FMT = 'dd/MMM/yyyy';
   name: string;
 
-
-  constructor(private companyRestService: CompanyRestService, private dialog: MatDialog ) { }
+  constructor(private companyRestService: CompanyRestService, private dialog: MatDialog) { }
   public companies: Company[];
   public coupons: Coupon[];
 
 
   ngOnInit(): void {
-    // this.name=this.companyRestService.company.name;
+    this.name = this.companyRestService.company.name;
 
     this.companyRestService.getAllCompanyCoupons().subscribe(
-      (res) => { this.coupons = res;},
+      (res) => { this.coupons = res; },
       (err) => { alert(err.error); });
 
 
@@ -42,7 +42,7 @@ export class CompanyComponent implements OnInit {
   }
   public deleteCoupon(coupon: Coupon): void {
     this.companyRestService.deleteCoupon(coupon.id).subscribe(
-      () => {  this.coupons = this.coupons.filter(item => item.id !== coupon.id); },
+      () => { this.coupons = this.coupons.filter(item => item.id !== coupon.id); },
       (err) => { alert(err.message); });
   }
 
@@ -52,31 +52,35 @@ export class CompanyComponent implements OnInit {
       (err) => { alert(err.error); });
 
   }
-  public getAllCompanyCouponsCategory():void{
-  this.companyRestService.getAllCompanyCouponsCategory().subscribe(
-    (res) => { this.coupons = res; },
-    (err) => { alert(err.error); });
+  public getAllCompanyCouponsCategory(): void {
+    this.companyRestService.getAllCompanyCouponsCategory().subscribe(
+      (res) => { this.coupons = res; },
+      (err) => { alert(err.error); });
   }
-  public getAllCompanyCouponsMaxPrice():void{
-  this.companyRestService.getAllCompanyCouponsMaxPrice().subscribe(
-    (res) => { this.coupons = res; },
-    (err) => { alert(err.error); });
-}
-public openCouponAddDialog(): void {
-  const dialogRef = this.dialog.open(DialogCouponComponent, { data: { type: ActionType.Create } })
-  dialogRef.afterClosed().subscribe(coupon => {
-    this.companyRestService.addCoupon(coupon).subscribe(res => {
-      this.companyRestService.getAllCompanyCoupons().subscribe(coupons => {this.coupons = coupons})})
-  })
-}
-public openCouponUpdateDialog(coupon: Coupon): void {
-  const dialogRef = this.dialog.open(DialogCouponComponent, { data: { type: ActionType.Update,coupon: coupon} })
-  dialogRef.afterClosed().subscribe(coupon => {
-    this.companyRestService.updateCoupon(coupon).subscribe(res => {
-      this.companyRestService.getAllCompanyCoupons().subscribe(coupons => {this.coupons = coupons})})
-  })
+  public getAllCompanyCouponsMaxPrice(): void {
+    this.companyRestService.getAllCompanyCouponsMaxPrice().subscribe(
+      (res) => { this.coupons = res; },
+      (err) => { alert(err.error); });
+  }
+  public openCouponAddDialog(): void {
+    const dialogRef = this.dialog.open(DialogCouponComponent, { data: { type: ActionType.Create } })
+    dialogRef.afterClosed().subscribe(coupon => {
+      if(!coupon) return;
+      this.companyRestService.addCoupon(coupon).subscribe(res => {
+        this.companyRestService.getAllCompanyCoupons().subscribe(coupons => { this.coupons = coupons })
+      })
+    })
+  }
+  public openCouponUpdateDialog(coupon: Coupon): void {
+    const dialogRef = this.dialog.open(DialogCouponComponent, { data: { type: ActionType.Update, coupon: coupon } })
+    dialogRef.afterClosed().subscribe(coupon => {
+      if(!coupon) return;
+      this.companyRestService.updateCoupon(coupon).subscribe(res => {
+        this.companyRestService.getAllCompanyCoupons().subscribe(coupons => { this.coupons = coupons })
+      })
+    })
 
-}
+  }
 }
 
 

@@ -11,7 +11,6 @@
       <th>amount</th>
       <th>price</th>
       <th>image</th>
-      <th>ACTION</th>
 
 
     </tr>
@@ -25,11 +24,15 @@
       <td>{{coupon.endDate}}</td>
       <td>{{coupon.amount}}</td>
       <td>{{coupon.price}}</td>
-      <td>{{coupon.image}}</td>
-      <td><button (click)="purchaseCoupon(coupon)">PURCHASE </button>
-      </td>
+      <td><img src={{coupon.image}}></td>
+      <ng-container *ngIf="isCouponPurchasable(coupon.id); else elseTemplate">
+        <td><button mat-button (click)="purchaseCoupon(coupon)">PURCHASE</button></td>
 
 
+    </ng-container>
+    <ng-template #elseTemplate>
+      <td><button mat-button disabled class="gray" (click)="purchaseCoupon(coupon)">PURCHASED</button></td>
+    </ng-template>
     </tr>
   </table>
 

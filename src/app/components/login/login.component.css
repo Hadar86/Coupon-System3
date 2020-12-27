@@ -1,21 +1,38 @@
-div{
+div {
+  font: normal normal normal 18px Segoe UI;
+  color: #000000;
+  /* margin: auto;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 15px;
+} */
+}
+.center {
+  font: normal normal normal 18x Segoe UI;
   margin: auto;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 20px;
-
+  width: 400px;
 }
-
-.center{
-  text-align: center;
-
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-
-}
-h1{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+h1 {
+  font: normal normal normal 28px Segoe UI;
+  letter-spacing: 0px;
+  color: #047a92;
+  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: bolder;
-  font-size: 80px;
-  text-shadow: 2px 2px rgb(245, 232, 158);
+  font-size: 40px;
+  text-shadow: 2px 2px rgb(245, 232, 158); */
 }
 
+.btn {
+  margin: 0 0 0 300px;
+  top: 25px;
+  right: 20px;
+  width: 79px;
+  height: 36px;
+  background: #f95c86;
+  border-radius: 18px;
+  border: 0.5px solid;
+  border-color: #f95c86;
+  text-align: center;
+  font: normal normal normal 14px Segoe UI;
+  letter-spacing: 0px;
+  color: #ffffff;
+}

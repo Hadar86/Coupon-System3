@@ -1,0 +1,51 @@
+.login {
+  top: 19px;
+  right: 20px;
+  width: 79px;
+  height: 36px;
+  background: #f95c86;
+  border-radius: 18px;
+  border: 0.5px solid;
+  border-color: #f95c86;
+  opacity: 1;
+  text-align: center;
+  font: normal normal normal 14px Segoe UI;
+  color: #ffffff;
+}
+.coup img {
+  width: 50px;
+  margin-left: 10px;
+}
+.myNav {
+  background-color: #000000;
+  font: normal normal normal 14px Segoe UI;
+}
+.navbar-brand {
+  margin-left: 1rem;
+  font: normal normal normal 20px Segoe UI;
+}
+.dcc {
+  font: normal normal normal 16px Segoe UI;
+  color: #ffffff;
+  border-color: #000000;
+  padding: 10px;
+}
+
+.dcc-clicked {
+  font: normal normal normal 16px Segoe UI;
+  color: #ff6e91;
+  border-color: #000000;
+  padding: 10px;
+}
+
+.crazy{
+  display: inline;
+  padding:15px;
+}
+
+.crazy img{
+  width:20px;
+  height: 20px;
+margin-left: 200px;
+ margin-left: 1rem;
+}

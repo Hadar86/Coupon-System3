@@ -6,6 +6,7 @@ import { Company } from './../../Models/Company';
 import { Component, OnInit } from '@angular/core';
 import { AdminRestService } from '../../services/adminRest.service';
 import { DialogCompanyComponent } from '../dialog-company/dialog-company.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -15,10 +16,11 @@ import { DialogCompanyComponent } from '../dialog-company/dialog-company.compone
 export class AdminComponent implements OnInit {
   public customers: Customer[];
   public companies: Company[];
+  public showCompanies : boolean;
 
 
 
-  constructor(private adminRestService: AdminRestService, private dialog: MatDialog) { }
+  constructor(private adminRestService: AdminRestService, private route: ActivatedRoute ,private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -29,6 +31,11 @@ export class AdminComponent implements OnInit {
     this.adminRestService.getAllCompanies().subscribe(
       (res) => { this.companies = res; },
       (err) => { alert(err.error); });
+
+     this.route.params.subscribe(params => {
+        this.showCompanies = params['data'] === 'companies';
+        });
+
 
   }
 
@@ -78,6 +85,7 @@ export class AdminComponent implements OnInit {
   public openCustomerAddDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, { data: { type: ActionType.Create } })
     dialogRef.afterClosed().subscribe(customer => {
+      if(!customer) return;
       this.adminRestService.addCustomer(customer).subscribe(res => {
         this.adminRestService.getAllCustomers().subscribe(customers => { this.customers = customers })
       })
@@ -87,14 +95,16 @@ export class AdminComponent implements OnInit {
   public openCustomerUpdateDialog(customer: Customer): void {
     const dialogRef = this.dialog.open(DialogComponent, { data: { type: ActionType.Update, customer: customer } })
     dialogRef.afterClosed().subscribe(customer => {
+      if(!customer) return;
       this.adminRestService.updateCustomer(customer).subscribe(res => {
         this.adminRestService.getAllCustomers().subscribe(customers => { this.customers = customers }, (err => { alert(err.error) }))
       })
     })
   }
   public openCompanyAddDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, { data: { type: ActionType.Create } })
+    const dialogRef = this.dialog.open(DialogCompanyComponent, { data: { type: ActionType.Create } })
     dialogRef.afterClosed().subscribe(company => {
+      if(!company) return;
       this.adminRestService.addCompany(company).subscribe(res => {
         this.adminRestService.getAllCompanies().subscribe(companies => { this.companies = companies })
       })
@@ -104,10 +114,12 @@ export class AdminComponent implements OnInit {
   public openCompanyUpdateDialog(company: Company): void {
     const dialogRef = this.dialog.open(DialogCompanyComponent, { data: { type: ActionType.Update, company: company } })
     dialogRef.afterClosed().subscribe(company => {
+      if(!company) return;
       this.adminRestService.updateCompany(company).subscribe(res => {
         this.adminRestService.getAllCompanies().subscribe(companies => { this.companies = companies })
       }, (err => { alert(err.error) }))
     })
-
   }
+
+
 }

@@ -5,6 +5,8 @@ import { LoginDetails } from './../../Models/LoginDetails';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { DialogLoginComponent } from '../dialog-login/dialog-login.component';
 
 @Component({
   selector: 'app-login',
@@ -12,33 +14,32 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // date: Date;
-  public loginDetails: LoginDetails= new LoginDetails;
+  public loginDetails: LoginDetails = new LoginDetails;
 
-  constructor(private router: Router, private adminRestService: AdminRestService, private companyRestService: CompanyRestService, private customerRestService: CustomerRestService) { }
+  constructor(private router: Router, private adminRestService: AdminRestService,
+    private companyRestService: CompanyRestService, private customerRestService: CustomerRestService, private dialogRef?: MatDialogRef<DialogLoginComponent>) { }
 
   ngOnInit(): void {
-// this.date= new Date();
   }
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     switch (this.loginDetails.type) {
       case 'Admin':
-      this.adminRestService.loginAdmin(this.loginDetails.email, this.loginDetails.password).subscribe(
-        (suc) => {this.router.navigate(['/'+this.loginDetails.type.toLowerCase()]);},
-        (err) => {alert(err.error); }
-      )
+        this.adminRestService.loginAdmin(this.loginDetails.email, this.loginDetails.password).subscribe(
+          (suc) => { this.adminRestService.setToken(suc); this.router.navigate(['/' + this.loginDetails.type.toLowerCase()+ '-dashboard']); this.dialogRef.close(); },
+          (err) => { alert(err.error); }
+        )
 
         break;
       case 'Company':
-      this.companyRestService.loginCompany(this.loginDetails.email, this.loginDetails.password).subscribe(
-          (suc) => {this.router.navigate(['/'+this.loginDetails.type.toLowerCase()]);},
-          (err) => {alert(err.error); }
+        this.companyRestService.loginCompany(this.loginDetails.email, this.loginDetails.password).subscribe(
+          (suc) => { this.companyRestService.setCompany(suc); this.router.navigate(['/' + this.loginDetails.type.toLowerCase()]); this.dialogRef.close(); },
+          (err) => { alert(err.error); }
         )
-          break;
+        break;
       case 'Customer':
         this.customerRestService.loginCustomer(this.loginDetails.email, this.loginDetails.password).subscribe(
-          (suc) => {this.customerRestService.customer=suc; this.router.navigate(['/'+this.loginDetails.type.toLowerCase()]);},
-          (err) => {alert(err.error); }
+          (suc) => { this.customerRestService.setCustomer(suc); this.router.navigate(['/' + this.loginDetails.type.toLowerCase()]); this.dialogRef.close(); },
+          (err) => { alert(err.error); }
         )
         break;
 

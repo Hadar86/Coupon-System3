@@ -17,6 +17,9 @@ import { DialogCompanyComponent } from './components/dialog-company/dialog-compa
 import { DialogCouponComponent } from './components/dialog-coupon/dialog-coupon.component';
 import { DialogDataComponent } from './components/dialog-data/dialog-data.component';
 import { HomeComponent } from './components/home/home.component';
+import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { HomeComponent } from './components/home/home.component';
     DialogCompanyComponent,
     DialogCouponComponent,
     DialogDataComponent,
-    HomeComponent
+    HomeComponent,
+    DialogLoginComponent,
+    FooterComponent,
+    AdminDashboardComponent,
 
   ],
   imports: [
@@ -40,7 +46,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
 
 
   ],

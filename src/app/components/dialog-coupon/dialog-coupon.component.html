@@ -53,22 +53,24 @@
     <div>
       <small>Amount</small><br>
       <input #amountInfo="ngModel" required matInput [(ngModel)]="coupon.amount" placeholder="amount"
-        name="amount"><br>
+        name="amount" pattern="^[0-9]+$" ><br>
       <span *ngIf="amountInfo.errors?.required && amountInfo.touched">Missing amount</span>
+      <span *ngIf="amountInfo.errors?.pattern && amountInfo.touched">Invalid amount</span>
     </div>
     <br>
     <div>
       <small>Price</small><br>
       <input #priceInfo="ngModel" required matInput [(ngModel)]="coupon.price" placeholder="price"
-        name="price"><br>
+        name="price" pattern="^[0-9]+($|.[0-9]{1,2}$)"><br>
       <span *ngIf="priceInfo.errors?.required && priceInfo.touched">Missing price</span>
+      <span *ngIf="priceInfo.errors?.pattern && priceInfo.touched">Invalid price</span>
     </div>
     <br>
     <div>
       <small>Image</small><br>
-      <input #imageInfo="ngModel" required matInput [(ngModel)]="coupon.image" placeholder="image"
+      <input #imageInfo="ngModel" required matInput [(ngModel)]="coupon.image" placeholder="Please Insert Image URL"
         name="image"><br>
-      <span *ngIf="imageInfo.errors?.required && imageInfo.touched">Missing image</span>
+      <span *ngIf="imageInfo.errors?.required && imageInfo.touched">Please Insert Image URL</span>
     </div>
     <br>
     <br>

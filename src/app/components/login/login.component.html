@@ -2,16 +2,17 @@
 <div class="center">
 
   <br>
-  <h1>Coupon System</h1>
+  <h1>Login</h1>
 </div>
 <br>
 <br>
-<br>
-<div>
+
+<div class>
+
   <form (ngSubmit)="onSubmit(formInfo)" #formInfo="ngForm" class="form-group" >
 
     <div class="form-row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-12">
         <label>Email address</label>
         <input #emailInfo="ngModel" type="email" class="form-control" aria-describedby="emailHelp" required email
           placeholder="Enter email" name="email" [(ngModel)]="loginDetails.email">
@@ -24,7 +25,7 @@
     </div>
 
     <div class="form-row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-12">
         <label for="exampleInputPassword1">Password</label>
         <input #passwordInfo="ngModel" type="password" required [(ngModel)]="loginDetails.password" name="password"
           pattern="^(?=.*[A-Z])(?=.*[!@#$%^])(?=.*[0-9])(?=.*[a-z]).{4,}" class="form-control" placeholder="Password">
@@ -38,7 +39,7 @@
     </div>
 
     <div class="form-row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-12">
         <label for="exampleInputPassword1">Type</label>
         <select #typeInfo="ngModel" required name="type" [(ngModel)]="loginDetails.type" class="custom-select"
           id="inputGroupSelect04">
@@ -60,7 +61,4 @@
 
   </form>
 </div>
-
-<!-- <hr>
-<p> {{loginDetails | json}} </p> -->
 
