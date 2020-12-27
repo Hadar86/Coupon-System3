@@ -55,7 +55,7 @@
       <input #amountInfo="ngModel" required matInput [(ngModel)]="coupon.amount" placeholder="amount"
         name="amount" pattern="^[0-9]+$" ><br>
       <span *ngIf="amountInfo.errors?.required && amountInfo.touched">Missing amount</span>
-      <span *ngIf="amountInfo.errors?.pattern && amountInfo.touched">Invalid amount</span>
+      <span  [ngStyle]="{'color':'tomato'}" *ngIf="amountInfo.errors?.pattern && amountInfo.touched">Invalid amount</span>
     </div>
     <br>
     <div>
@@ -63,7 +63,7 @@
       <input #priceInfo="ngModel" required matInput [(ngModel)]="coupon.price" placeholder="price"
         name="price" pattern="^[0-9]+($|.[0-9]{1,2}$)"><br>
       <span *ngIf="priceInfo.errors?.required && priceInfo.touched">Missing price</span>
-      <span *ngIf="priceInfo.errors?.pattern && priceInfo.touched">Invalid price</span>
+      <span [ngStyle]="{'color':'tomato'}" *ngIf="priceInfo.errors?.pattern && priceInfo.touched">Invalid price</span>
     </div>
     <br>
     <div>
