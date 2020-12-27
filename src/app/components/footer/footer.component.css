@@ -8,18 +8,14 @@ div {
   display: flex;
 }
 a {
-  /* margin: 0 0 0 1200; */
   font: normal normal normal 18px Segoe UI;
   color: #ffffff;
   display: inline;
 }
 p {
-  /* width: 100px; */
   display: inline;
 }
 img {
   margin-left:auto;
-  /* padding-left: 1400px; */
-  /* widows: 20px; */
   height: 20px;
 }
